@@ -1,0 +1,16 @@
+127.0.0.1 - - [10/May/2021:19:54:31 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [10/May/2021:19:54:32 -0300] "GET /ProjetoJavaWeb/CadastroUsuarios.html HTTP/1.1" 200 4257
+0:0:0:0:0:0:0:1 - - [10/May/2021:19:54:32 -0300] "GET /ProjetoJavaWeb/bootstrap/dist/css/bootstrap.min.css HTTP/1.1" 200 161409
+0:0:0:0:0:0:0:1 - - [10/May/2021:19:54:32 -0300] "GET /ProjetoJavaWeb/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1" 200 84378
+0:0:0:0:0:0:0:1 - - [10/May/2021:19:54:32 -0300] "GET /favicon.ico HTTP/1.1" 404 774
+127.0.0.1 - - [10/May/2021:20:44:28 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:44:29 -0300] "GET /ProjetoJavaWeb/CadastroUsuarios.html HTTP/1.1" 200 4402
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:44:29 -0300] "GET /ProjetoJavaWeb/bootstrap/dist/css/bootstrap.min.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:44:29 -0300] "GET /ProjetoJavaWeb/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:44:36 -0300] "GET /ProjetoJavaWeb/bootstrap/dist/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 316181
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:44:36 -0300] "GET /ProjetoJavaWeb/bootstrap/dist/css/bootstrap.min.css.map HTTP/1.1" 200 650715
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:45:04 -0300] "GET /ProjetoJavaWeb/UsuarioServlet?email=&nome=&senha= HTTP/1.1" 200 20
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:45:53 -0300] "GET /ProjetoJavaWeb/UsuarioServlet?email=&nome=&senha= HTTP/1.1" 200 26
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:46:39 -0300] "GET /ProjetoJavaWeb/UsuarioServlet?email=ffff&nome=aaa&perfil=1&senha=ssss&status=1 HTTP/1.1" 200 26
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:47:05 -0300] "GET /ProjetoJavaWeb/UsuarioServlet?email=ffff&nome=aaa&perfil=2&senha=&status=1 HTTP/1.1" 200 26
+0:0:0:0:0:0:0:1 - - [10/May/2021:20:47:25 -0300] "GET /ProjetoJavaWeb/UsuarioServlet?email=ffff&nome=aaa&perfil=2&senha=retertre&status=1 HTTP/1.1" 200 26

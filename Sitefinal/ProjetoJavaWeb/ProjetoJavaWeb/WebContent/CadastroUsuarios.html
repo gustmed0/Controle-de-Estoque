@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    	function buscar_simples(){
+    		var linha = '<tr>' +
+		      '<td>1</td>' +
+		      '<td>Leandro</td>' +
+		      '<td>leandrodam@gmail.com</td>' +
+		      '<td>colaborador</td>' +
+		      '<td>ativo</td>' +
+		      '<td><button type="button" class="btn btn-danger">excluir</button>' +
+			  '<button type="button" class="btn btn-warning">editar</button></td>' +
+		    '</tr>';
+		    
+            var tbody = document.getElementById("tbody_table");                        
+		    tbody.innerHTML = linha;
+		    
+    	}
+    
+    
+    	function buscar(){
+            var camponome = document.getElementById("PRODUTO").value;
+            var json = {"PRODUTO":camponome, "acao":"buscar"};
+    		
+    		$.ajax({
+                url:"AlunoServlet",
+                data: json,
+                type: "get",
+                success: function(resp){
+		    		var json = JSON.parse(resp);
+		    		var linha = "";
+		    		for (indice in json){
+                        var ID   = json[indice].ID;
+                        var PRODUTO  = json[indice].PRODUTO;
+                        var CORES = json[indice].CORES;
+                        var VALOR = json[indice].VALOR;
+                        var MOVEIS = json[indice].MOVEIS;
+                        var STATUS = json[indice].STATUS;
+                        
+                        linha += '<tr>' +
+	  				      '<td>' + ID + '</td>' +
+	  				      '<td>' + PRODUTO + '</td>' +
+	  				      '<td>' + CORES + '</td>' +
+	  				      '<td>' + VALOR + '</td>' +
+	  				      '<td>' + MOVEIS + '</td>' +
+	  				      '<td>' + STATUS + '</td>' +
+	  				      '<td><button type="button" class="btn btn-danger">excluir</button>' +
+	  					  '<button type="button" class="btn btn-warning">editar</button></td>' +
+	  				    '</tr>';
+		    		}
+                    var tbody = document.getElementById("tbody_table");                        
+				    tbody.innerHTML = linha;
+                }
+            });
+    	}
+    	
+    	function salvar_dados(){
+        	
+        	var campora = document.getElementById("ra").value;
+            var camponome = document.getElementById("nome").value;
+            var campocurso = document.getElementById("curso").value;
+            var camposexo = "";
+            if (document.getElementById("feminino").checked){
+            	camposexo = "feminino";
+            }else if (document.getElementById("masculino").checked){
+            	camposexo = "masculino";
+            }
+            var camposenha = document.getElementById("senha").value;
+            var json = {"ra":campora,"nome":camponome,"curso":campocurso,"sexo":camposexo,"senha":camposenha, "acao":"salvar"};
+                             
+            $.ajax({
+                url:"AlunoServlet",
+                data: json,
+                type: "post",
+                success: function(resp){
+                	var vetor_json = JSON.parse(resp);
+                	alert(vetor_json[0].msg);
+                }
+            });
+            
+        }
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Wooodo</title>
+  </head>
+  
+  	<style type="text/css">
+	
+		body{
+			background-image: url(bootstrap/dist/images/banner-bg.png);
+		}
+		
+	</style>
+
+  <body>
+  
+	  <br>
+	  <br>
+    
+    
+    <div class="col-sm-12 col-lg-3">
+				<div class="logo"><img src="bootstrap/dist/images/logo.png"></div>
+		</div>
+	<div class="container-center-md">
+
+	  <div class="row pb-1 justify-content-md-center">
+	    <div class="col-md-3" align="center">
+	      <h4>  ESTOQUE </h4>
+	    </div>
+	  </div>
+	  <br>	
+	  
+	<form action="UsuarioServlet" method="get">
+	  <div class="row pb-1 justify-content-md-center">
+	    <div class="col-md-1" align="right">
+	      ID
+	    </div>
+	    <div class="col-md-2" align="center">
+	      <input name="id" class="form-control" type="text" placeholder="ID" disabled >
+	    </div>
+	   	<div class="col-md-1" align="right">
+	      Cores
+	    </div>
+	    <div class="col-md-2" align="center"> 
+	    	<select name="cores" class="form-control" placeholder="Selecione...">
+	    	<option value="" disable selected>Selecione...</option>
+	    	<option value="1">Amarelo</option>
+	    	<option value="1">Branco</option>
+	    	<option value="1">Preto</option>
+	    	<option value="1">Rosa</option>
+	    	<option value="1">Vermelho</option>
+	    	<option value="1">Marrom</option>
+	    	<option value="1">Cinza</option>
+	    	</select>
+	    </div>
+	  </div>
+	  <div class="row pb-1 justify-content-md-center">
+	    <div class="col-md-1" align="right">
+	      Produto
+	    </div>
+	    <div class="col-md-2" align="center">
+	      <input name="produto" class="form-control" type="text" placeholder="Produto">
+	    </div>
+		<div class="col-md-1" align="right">
+	      Tipos de Móveis
+	    </div>
+	    <div class="col-md-2" align="center">				
+		    <select name="moveis" class="form-control" placeholder="Selecione">
+		    	  <option value="" disabled selected>Selecione...</option>
+		    	  <option value="1">Criado Mudo</option>
+				  <option value="2">Cadeiras</option>
+				  <option value="3">Escrivaninha</option>
+				  <option value="4">Estante</option>
+				  <option value="5">Mesa de Bar</option>
+				  <option value="3">Mesa de Centro</option>
+				  <option value="3">Mesa de Jantar</option>
+				  
+				  
+		    </select>
+	    </div>
+	  </div>
+	  <div class="row pb-1 justify-content-md-center">
+	    <div class="col-md-1" align="right">
+	      Valor
+	    </div>
+	    <div class="col-md-2" align="center">
+	      <input name="valor" type="Number" class="form-control" placeholder="Valor">
+	    </div>
+	    <div class="col-md-1" align="right">
+	      Status
+	    </div>
+	    <div class="col-md-2" align="center">				
+		    <select name="status" class="form-control" placeholder="Selecione">
+		    	  <option value="" disabled selected>Selecione...</option>
+				  <option value="1">Indisponivel</option>
+				  <option value="2">Disponivel</option>
+		    </select>
+	    </div>
+	  </div>
+	  
+	  <br>
+	  <div class="row pb-1 justify-content-md-center">
+	    <div class="col-md-8"  align="center">
+	      <button type="button" class="btn btn-primary" onClick="buscar()">Consultar</button>
+	      <button name="salvar" type="submit" class="btn btn-primary">salvar</button>
+	      <button type="button" class="btn btn-primary">Limpar</button>
+	    </div>
+	  </div>
+	  
+	</form>
+	
+
+
+
+	  <br>
+	  <br>
+	  <div class="row justify-content-md-center">
+	   	<div class="col-md-8"   align="center">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">PRODUTO</th>
+			      <th scope="col">TIPO</th>
+			      <th scope="col">VALOR</th>
+			      <th scope="col">STATUS</th>
+			      <th scope="col">-</th>
+			    </tr>
+			  </thead>
+			  <tbody id="tbody_table">
+			  </tbody>
+			</table>
+	    </div>
+	  </div>
+	</div>
+
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
+
+
